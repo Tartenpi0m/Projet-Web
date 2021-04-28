@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 28 avr. 2021 à 17:37
+-- Généré le : mer. 28 avr. 2021 à 22:43
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -77,6 +77,9 @@ CREATE TABLE IF NOT EXISTS `client` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `identifiant` varchar(20) NOT NULL,
   `pass` varchar(20) NOT NULL,
+  `carte_num` bigint(16) NOT NULL DEFAULT '0',
+  `carte_cvv` int(3) NOT NULL,
+  `carte_date` char(7) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifiant` (`identifiant`)
 ) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
@@ -85,14 +88,14 @@ CREATE TABLE IF NOT EXISTS `client` (
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id`, `identifiant`, `pass`) VALUES
-(17, 'scvx', 'xcw'),
-(2, 'theuser2', '222'),
-(3, 'testuser', 'whatabigmdp'),
-(4, 'login', 'mdp'),
-(5, 'azert', 'sdf'),
-(7, 'jean-michel', 'lamberd'),
-(16, 'azer', 'qsd');
+INSERT INTO `client` (`id`, `identifiant`, `pass`, `carte_num`, `carte_cvv`, `carte_date`) VALUES
+(17, 'scvx', 'xcw', 0, 0, ''),
+(2, 'lolaz', '222', 4587536521452365, 125, '125'),
+(3, 'testuser', 'whatabigmdp', 0, 0, ''),
+(4, 'login', 'mdp', 0, 0, ''),
+(5, 'azerto', 'sdf', 0, 0, ''),
+(7, 'jean-michel', 'lamberd', 1452365874586542, 123, '05/1202'),
+(16, 'azer', 'qsd', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -103,8 +106,10 @@ INSERT INTO `client` (`id`, `identifiant`, `pass`) VALUES
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_client` int(10) UNSIGNED NOT NULL,
   `quantite` int(10) UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_id_client` (`id_client`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -143,6 +148,12 @@ CREATE TABLE IF NOT EXISTS `produit_commande` (
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `fk_id_client` FOREIGN KEY (`id_client`) REFERENCES `commande` (`id`);
 
 --
 -- Contraintes pour la table `produit`

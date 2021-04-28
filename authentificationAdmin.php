@@ -14,7 +14,7 @@
         <div>
             <form method="post">
                 <p style="text-align:end;">Identifiant: <input type="text" name="identifiant"/></p>
-                <p style="text-align:end;">Mot de passe: <input type="text" name="mdp"></p>
+                <p style="text-align:end;">Mot de passe: <input type="password" name="mdp"></p>
                 <p style="margin-left: 1em;"><input type="submit" value="Confirmer"></p>
                 <p style="color: red; text-align: center"><?php if (isset($_POST["identifiant"])) { echo "identifiants incorrects";} ?></p>
             </form>
@@ -23,35 +23,24 @@
 
     <?php
 
+    include("include\\bddfonction.php");
+
     if (isset($_POST["identifiant"])) {
 
         $login = $_POST["identifiant"];
         $mdp = $_POST["mdp"];
+
+        $co = connection_bdd();
+        $datarow = select_admin($co, $login);
+        $vrai_pass = pass($datarow);
         
-        
-        //se connecter à la base de donnée
-        $co = mysqli_connect("localhost", "root");
-        mysqli_select_db($co,"projet-web");
-
-        //formuler la requête
-        $query = "SELECT identifiant, pass FROM admin WHERE identifiant LIKE \"$login\"  ";
-
-        //faire la requête
-        $response = mysqli_query($co, $query);
-
-        while($datarow = $response->fetch_array()) {
-
-            if($datarow[0] == $login) {
-
-                if($datarow[1] == $mdp) {  
-                    //Redirection  vers la page administrateur (en indiquant que l'on est bien un admin)
-                    $_SESSION['identifiant'] = $login;
-                    $_SESSION['admin'] = "yes";
-                    header("Location: admin.php");
-                
-                }
-            }
-        }
+        if($vrai_pass == $mdp) {  
+            //Redirection  vers la page administrateur (en indiquant que l'on est bien un admin)
+            $_SESSION['identifiant'] = $login;
+            $_SESSION['admin'] = "yes";
+            header("Location: admin.php");        
+        } 
+ 
     }
     ?>    
     
