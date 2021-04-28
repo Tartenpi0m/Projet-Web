@@ -1,0 +1,41 @@
+.updiv {
+    clear: both;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(100, 148, 237, 0.692);
+
+    padding: 2em;
+
+}
+
+.downdiv {
+    clear: both;
+    width: fit-content;
+    height: fit-content;
+    background-color: cornflowerblue;
+    padding: 1em;
+    margin: 0 auto;
+    
+
+}
+
+
+.cat {
+    font-size: large;
+    font-weight: bold;
+    outline-color: cyan;
+    
+    
+
+}
+
+.fct {
+    font-size: medium;
+    font-weight: 700;
+}
+
+.champs {
+
+    display: inline;
+
+}
