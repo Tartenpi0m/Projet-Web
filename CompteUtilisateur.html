@@ -4,50 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AchatGo</title>
+    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 <body>
-    
     <nav class="nav sticky">
         <label class="ShopOn">ShopOn</label>
         <ul class="main-nav">
                 <li ><a class="active" href="Accueil.html" >Home</a> </li>
-                <li><a href="" >Maison</a> </li>
-                <li><a href="" >Cuisine</a> </li>
-                <li><a href="" >Beauté</a> </li>
+                
                 <li class="push"><a href="" ><i class="fas fa-shopping-cart"></i></a> </li>
-                <li class=><a href="CompteUtilisateur.html" ><i class="fas fa-user-circle"></i></a> </li>
+                <li class="push"><a href="" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>
 
     </nav>
-
     <div class="container zone  ">
-        
-        <div class="search-box">
-            <div class="txt"><h2 id="h2">Bienvenue chez ShopOn</h2>
-                <p id="p">Vous trouverez tous tous les articles à mini prix !</p></div>
-            
-            <input class="search-txt" type="text" name="search" placeholder="Tapez articles" > 
-            <input class="btn-search" type="button"  onclick="myFunction_btn()" value="Search">   
+        <div class="regform"><h1>Formulaire d'inscription </h1><br><br>
+            <div class="formulaire">
+     
+            <form >
+                <label id="txt">Nom :</label>
+                <input class="input" type="text" name="nom"><br><br>
+                <label id="txt"> Prenom : </label>
+                <input class="input" type="text" name="prenom"><br><br>
+                <label id="txt">E-mail : </label>
+                <input class="input" type="email" name="email" required><br><br>
+                <label id="txt">Portable : </label>
+                <input class="input" type="text" name="numero"><br><br>
+                <label id="txt">Adesse : </label>
+                <input class="input" type="text" name="adesse"><br><br>
+               
+                <label id="txt"> Sexe :</label>
+                <input type="radio" name="sexe"> Masculin 
+                <input type="radio" name="sexe"> Feminin <br><br>
+                
+                   
+                <input id="bouton" type="button" name="confirmer" value="Confirmer">
+    
+            </form>
+          </div>
+        </div>  
         </div>
-        
-
-    </div>
-    <div class="zone grid-wrapper">
-        <div class="box zone"> <img src="imagesArticles/rouge à levre.png"></div>
-        <div class="box zone"> <img src="imagesArticles/creme yves rocher.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/parfum channel 5.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/parfum la vie est belle.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/shampoo elseve.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/rouge à levre.png"></div>
-        <div class="box zone"> <img src="imagesArticles/creme yves rocher.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/parfum channel 5.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/parfum la vie est belle.jpg"></div>
-        <div class="box zone"> <img src="imagesArticles/shampoo elseve.jpg"></div>
-    </div>
     <footer class="footer">
         <div class="main-footer">
         <div class="row">
@@ -92,5 +92,6 @@
         
     </footer>
 
+    
 </body>
 </html>
