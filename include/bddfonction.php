@@ -8,39 +8,42 @@ function connection_bdd() {
 }
 
 function select_client($co, $nomclient) {
-    $query = "SELECT identifiant, pass, carte_num, carte_cvv, carte_date FROM client WHERE identifiant LIKE \"$nomclient\"";
+    $query = "SELECT id, identifiant, pass, carte_num, carte_cvv, carte_date FROM client WHERE identifiant LIKE \"$nomclient\"";
     $response = mysqli_query($co, $query);
     $datarow = $response->fetch_array();
     return $datarow;
 }
 
 function select_admin($co, $nomclient) {
-    $query = "SELECT identifiant, pass FROM admin WHERE identifiant LIKE \"$nomclient\"";
+    $query = "SELECT id, identifiant, pass FROM admin WHERE identifiant LIKE \"$nomclient\"";
     $response = mysqli_query($co, $query);
     $datarow = $response->fetch_array();
     return $datarow;
 }
 
 
-
-function identifiant($datarow) {
+function id($datarow) {
     return $datarow[0];
 }
 
-function pass($datarow) {
+function identifiant($datarow) {
     return $datarow[1];
 }
 
-function carte_num($datarow) {
+function pass($datarow) {
     return $datarow[2];
 }
 
-function carte_3num($datarow) {
+function carte_num($datarow) {
     return $datarow[3];
 }
 
-function carte_date($datarow) {
+function carte_3num($datarow) {
     return $datarow[4];
+}
+
+function carte_date($datarow) {
+    return $datarow[5];
 }
 
 

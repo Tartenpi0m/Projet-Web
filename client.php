@@ -1,5 +1,8 @@
 <?php 
     session_start();
+    if(empty($_SESSION['identifiant'])) {
+        header("Location: authentificationUser.php");
+    }
     if( isset($_SESSION['identifiant']) and $_SESSION['admin'] == "no") {
         $identifiant = $_SESSION['identifiant'];
     } else if($_SESSION['admin'] == "yes") {
@@ -13,6 +16,7 @@
     include("include\\bddfonction.php"); 
     $co = connection_bdd();
     $datarow = select_client($co, $identifiant);
+    $id_client = id($datarow);
     $identifiant = identifiant($datarow);
     $pass = pass($datarow);
 
@@ -102,6 +106,7 @@
                 }
             }
 
+            //CARTE
             if($carte_num !== "" or $carte_cvv !== "" or $carte_date !== "") {
                 if($carte_num == "" or $carte_cvv == "" or $carte_date == "") {
                     echo '<p style="color: red;">Tous les champs de la carte de paiment ne sont pas remplis, aucune modification n\'a été apportée sur la carte</p>';
@@ -145,7 +150,49 @@
 <div class="updiv">
         <p>COMMANDES</p>
         <div class="downdiv">
-        
+
+
+            <?php
+                $query = "SELECT commande.id FROM commande,client WHERE client.id = commande.id_client AND client.id = $id_client";
+                $response_id_commande = mysqli_query($co, $query);
+
+                while ($id_commande = $response_id_commande->fetch_array()) {
+
+                    $id_commande = $id_commande[0];
+                    $query2 = "SELECT produit_commande.id_produit FROM produit_commande WHERE produit_commande.id_commande = $id_commande";
+                    $response_id_produit = mysqli_query($co, $query2);
+                    
+                    echo '<div class="commandediv">';
+                    echo "Commande n#$id_commande<br>";
+
+                    while($id_produit = $response_id_produit->fetch_array(MYSQLI_NUM)) {
+
+                        echo '<div class="articlediv">';
+
+                        $id_produit = $id_produit[0];
+                        $query3 = "SELECT id, nom, prix, categorie FROM produit WHERE id = $id_produit";
+                        $response_produit_info = mysqli_query($co, $query3);
+                        $array_produit_info = $response_produit_info->fetch_array(MYSQLI_NUM);
+
+                        $id = $array_produit_info[0];
+                        $nom = $array_produit_info[1];
+                        $prix = $array_produit_info[2];
+
+                        $categorieINT = $array_produit_info[3];
+                        $response = mysqli_query($co, "SELECT categorie.nom FROM categorie WHERE categorie.id = $categorieINT");
+                        $categorie = ($response->fetch_array(MYSQLI_NUM))[0];
+
+                        echo "Article#$id $nom $categorie $prix euro";
+
+                        echo "</div>";
+
+                    }
+                    echo "</div>";
+
+                }
+            ?>
+
+
         </div>
 </div>
 

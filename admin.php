@@ -29,6 +29,7 @@ if($_SESSION['admin'] !== "yes") {
  mysqli_select_db($co,"projet-web");
 
 ?>
+<p>Espace Administrateur</p>
 
 <div class="updiv">
     <p class="cat">Client</p>
@@ -121,7 +122,7 @@ if($_SESSION['admin'] !== "yes") {
                 if($response) {
                     echo "Catégorie ajouter !";
                 } else {
-                    echo "L'opération n'a pas fonctionnée";
+                    echo "L'opération n'a pas fonctionnée, la catégorie existe surement déjà";
                 }
                 unset($_POST['ajouter_categorie']);
 
@@ -151,7 +152,7 @@ if($_SESSION['admin'] !== "yes") {
                 if($response) {
                     echo "Si la catégorie existait, elle a été supprimée !";
                 } else {
-                    echo "L'opération n'a pas fonctionnée";
+                    echo "L'opération n'a pas fonctionnée (peut-être que cette catégorie contient certains produits)";
                 }
                 unset($_POST['supprimer_categorie']);
 
@@ -191,8 +192,8 @@ if($_SESSION['admin'] !== "yes") {
                     if($cat_response) {
 
                         //requête d'insertion du produit
-                        $categorieINT = mysqli_fetch_array($cat_response);
-                        $categorieINT = intval($categorieINT);
+                        $categorieINT = $cat_response->fetch_array();
+                        $categorieINT = intval($categorieINT[0]);
 
                         $query2 = "INSERT INTO produit (id, nom, description, image_addr, prix, categorie) VALUES (NULL, \"$nom\", \"$description\", \"$img_addr\", \"$prix\", \"$categorieINT\")";
         

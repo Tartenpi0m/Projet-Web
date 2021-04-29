@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 28 avr. 2021 à 22:43
+-- Généré le : jeu. 29 avr. 2021 à 13:09
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -56,15 +56,15 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `nom` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categorie`
 --
 
 INSERT INTO `categorie` (`id`, `nom`) VALUES
-(1, 'maison'),
-(2, 'test');
+(7, 'maison'),
+(6, 'tissu');
 
 -- --------------------------------------------------------
 
@@ -78,24 +78,18 @@ CREATE TABLE IF NOT EXISTS `client` (
   `identifiant` varchar(20) NOT NULL,
   `pass` varchar(20) NOT NULL,
   `carte_num` bigint(16) NOT NULL DEFAULT '0',
-  `carte_cvv` int(3) NOT NULL,
-  `carte_date` char(7) NOT NULL,
+  `carte_cvv` int(3) NOT NULL DEFAULT '0',
+  `carte_date` char(7) NOT NULL DEFAULT '-',
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifiant` (`identifiant`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`id`, `identifiant`, `pass`, `carte_num`, `carte_cvv`, `carte_date`) VALUES
-(17, 'scvx', 'xcw', 0, 0, ''),
-(2, 'lolaz', '222', 4587536521452365, 125, '125'),
-(3, 'testuser', 'whatabigmdp', 0, 0, ''),
-(4, 'login', 'mdp', 0, 0, ''),
-(5, 'azerto', 'sdf', 0, 0, ''),
-(7, 'jean-michel', 'lamberd', 1452365874586542, 123, '05/1202'),
-(16, 'azer', 'qsd', 0, 0, '');
+(19, 'antoine', 'antoine', 0, 0, '-');
 
 -- --------------------------------------------------------
 
@@ -107,10 +101,18 @@ DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_client` int(10) UNSIGNED NOT NULL,
-  `quantite` int(10) UNSIGNED NOT NULL,
+  `quantite` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_id_client` (`id_client`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id`, `id_client`, `quantite`) VALUES
+(4, 19, 0),
+(6, 19, 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,17 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`),
   KEY `fk_categorie` (`categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`id`, `nom`, `description`, `image_addr`, `prix`, `categorie`) VALUES
+(13, 'pull', 'noir', '', 25, 6),
+(14, 'chaussure', 'cirÃ©e noir', '', 85, 6),
+(15, 'chaise', 'chaise en bois', NULL, 15, 7),
+(16, 'tabouret', 'blanc', NULL, 5, 7);
 
 -- --------------------------------------------------------
 
@@ -141,9 +153,21 @@ DROP TABLE IF EXISTS `produit_commande`;
 CREATE TABLE IF NOT EXISTS `produit_commande` (
   `id_produit` int(11) UNSIGNED NOT NULL,
   `id_commande` int(11) UNSIGNED NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
   KEY `fk_id_produit` (`id_produit`),
   KEY `fk_id_commande` (`id_commande`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `produit_commande`
+--
+
+INSERT INTO `produit_commande` (`id_produit`, `id_commande`, `id`) VALUES
+(13, 4, 4),
+(14, 4, 5),
+(15, 6, 6),
+(16, 6, 7);
 
 --
 -- Contraintes pour les tables déchargées
@@ -153,20 +177,13 @@ CREATE TABLE IF NOT EXISTS `produit_commande` (
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `fk_id_client` FOREIGN KEY (`id_client`) REFERENCES `commande` (`id`);
+  ADD CONSTRAINT `fk_id_client` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
 -- Contraintes pour la table `produit`
 --
 ALTER TABLE `produit`
   ADD CONSTRAINT `fk_categorie` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`id`);
-
---
--- Contraintes pour la table `produit_commande`
---
-ALTER TABLE `produit_commande`
-  ADD CONSTRAINT `fk_id_commande` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`),
-  ADD CONSTRAINT `fk_id_produit` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

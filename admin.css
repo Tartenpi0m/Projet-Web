@@ -35,7 +35,18 @@
 }
 
 .champs {
-
     display: inline;
+}
 
+
+.commandediv {
+ 
+    background-color: chartreuse;
+   
+    
+
+}
+
+.articlediv {
+    background-color: chartreuse;
 }
