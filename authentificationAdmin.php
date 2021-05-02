@@ -16,7 +16,9 @@
                 <p style="text-align:end;">Identifiant: <input type="text" name="identifiant"/></p>
                 <p style="text-align:end;">Mot de passe: <input type="password" name="mdp"></p>
                 <p style="margin-left: 1em;"><input type="submit" value="Confirmer"></p>
-                <p style="color: red; text-align: center"><?php if (isset($_POST["identifiant"])) { echo "identifiants incorrects";} ?></p>
+                <p style="color: red; text-align: center">
+                <?php if (isset($_POST["identifiant"]))
+                 { echo "identifiants incorrects";} ?></p>
             </form>
         </div>
     </div>

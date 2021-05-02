@@ -90,7 +90,7 @@ if($_SESSION['admin'] !== "yes") {
         if($response) {
             echo "Si le client existait, son compte à été supprimé !";
         } else {
-            echo "L'opération n'a pas fonctionnée";
+            echo "L'operation n'a pas fonctionnée";
         }
         unset($_POST['supprimer_client']);
     }

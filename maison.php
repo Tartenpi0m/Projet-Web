@@ -1,3 +1,6 @@
+<?php 
+    session_start(); ?>
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,44 +13,48 @@
 
 </head>
 <body>
-    <nav class="nav sticky">
+<nav class="nav sticky">
         <label class="ShopOn">ShopOn</label>
         <ul class="main-nav">
-                <li ><a class="active" href="Accueil.html" >Home</a> </li>
-                
-                <li class="push"><a href="" ><i class="fas fa-shopping-cart"></i></a> </li>
-                <li class="push"><a href="" ><i class="fas fa-user-circle"></i></a> </li>
+                <li ><a  href="Accueil.php" >Home</a> </li>
+                <li><a class="active" href="maison.php" >Maison</a> </li>
+                <li><a href="cuisine.php" >Cuisine</a> </li>
+                <li><a href="beaute.php" >Beauté</a> </li>
+                <li class="push"><a href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
+                <li class=><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>
 
     </nav>
-    <div class="container zone  ">
-        <div class="regform"><h1>Formulaire d'inscription </h1><br><br>
-            <div class="formulaire">
-     
-            <form >
-                <label id="txt">Nom :</label>
-                <input class="input" type="text" name="nom"><br><br>
-                <label id="txt"> Prenom : </label>
-                <input class="input" type="text" name="prenom"><br><br>
-                <label id="txt">E-mail : </label>
-                <input class="input" type="email" name="email" required><br><br>
-                <label id="txt">Portable : </label>
-                <input class="input" type="text" name="numero"><br><br>
-                <label id="txt">Adesse : </label>
-                <input class="input" type="text" name="adesse"><br><br>
-               
-                <label id="txt"> Sexe :</label>
-                <input type="radio" name="sexe"> Masculin 
-                <input type="radio" name="sexe"> Feminin <br><br>
-                
-                   
-                <input id="bouton" type="button" name="confirmer" value="Confirmer">
     
-            </form>
-          </div>
-        </div>  
-        </div>
+
+        
+        <?php 
+    
+    //connexion au serveur
+    $co=mysqli_connect('localhost','root');
+    //connexion à la base de donnée projet-web
+    mysqli_select_db($co,"projet-web");
+    $sql = "SELECT * FROM produit WHERE categorie='7'";
+    $result = mysqli_query($co,$sql );
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="grid-categories">';
+        echo '<div class="boxe">';
+        echo '<img src="'.$row["image_addr"].'"/>';
+        echo '</div>';
+        echo '</div>';
+        
+    } 
+}       
+ else {
+    echo "0 results";
+}
+    ?>
+   
+  
     <footer class="footer">
         <div class="main-footer">
         <div class="row">

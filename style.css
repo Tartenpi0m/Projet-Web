@@ -9,16 +9,6 @@ body {
     font-family:Lucida;
 }
 
-.zone {
-   
-    font-size:1em;
-}
-
-
-.box:hover {
-    transform: rotate(-7deg);
-}
-
 /***********************************************************************
  *  Nav Bar
  **********************************************************************/
@@ -36,14 +26,11 @@ body {
 
     }
 }
-
-
 .nav{
     height: 80px;
     width: 100%;
     background-color:  #2f3640;
-    text-decoration: none;
-    
+    text-decoration: none;    
 }
 label.ShopOn{
     padding: 0 100px;
@@ -69,22 +56,25 @@ label.ShopOn{
     padding: 7px 10px;
     border-radius: 3px;
 }
-a.active:hover{
+a.active,li a:hover{
     border: 1px solid  #e91e63;
     transition: .5s;
+    color: #ffffff;
+    text-decoration: none;
 }
 /***********************************************************************
  *  Cover
  **********************************************************************/
-.container { 
+.container {
     height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
     background-color:#aa949462;
-
 }
-
+div.container.zone{
+    width: 100%;
+}
 /***********************************************************************
  *  search box
  **********************************************************************/
@@ -129,36 +119,61 @@ input.search-txt {
     padding-left: 20px;
     font-size: 16px;
 }
-
+.connexion_utilisateur{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+.connexion_utilisateur a:hover{
+    padding-left: 5px;
+    color: darkblue;
+}
 
 /***********************************************************************
  *  Grid Panel
  **********************************************************************/
 .grid-wrapper {
+  
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
     background-color:#aa949462;
 }
-
-.box {      
+.box{      
     background-color: #2f3640;
     padding: 30px;
     margin: 20px;
 }
-
-.box > img {
+.box >img {
     width: 100%;
-    height: 100%;
+    height: 140px;
+      
 }
 
+.zone {
+    font-size:1em;
+    cursor: pointer;
+}
+.box:hover {
+    transform: rotate(-7deg);
+}
+/*****************   [   categories   ]  **********************************
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    background-color: #aa949462;
+    height: 100vh;
+    padding-top: 20vh;
+}*/
 /***********************************************************************
  *  formulaire d'inscription
  **********************************************************************/
  
 .regform{
     width: 700px;
-    height: 50vh;
+    height: 60vh;
     background-color: rgba(0, 0, 0, 0.712);
     margin: auto;
     color: #FFFFFF;
@@ -167,12 +182,13 @@ input.search-txt {
     border-radius: 15px 15px 0px 0px;
 }
 .formulaire{
-    background-color: rgba(0, 0, 0, 0.712);
+    background-color:#2f3640;
     width: 700px;
-    margin: auto;   
+    margin: auto; 
+    height: 60vh;  
 }
-form{
-    padding: 10px;
+.forminscription{
+    padding: 40px;
 }
 .formulaire label{
     width: 150px;
@@ -185,30 +201,25 @@ form{
     width: 200px;
     height: 20px;
     border-radius: 7px 7px 7px 7px;
-    border: none;
-   
+    border: none; 
 }
 input.input:hover{
     background-color:rgb(252, 237, 214) ;
 }
-#bouton {
+input#bouton {
     width: 100px;
     height: 40px;
-    background-color:#2f3640;
+    background-color: #e91e63;
     color: #ffffff;
     text-align: center;
-    font-family: cambria ;
-    font-size: large; 
+    font-size: 16px;
     border: none;
-    border-radius: 7px 7px 7px 7px ;
-    
-   
-
+    border-radius: 20px;
+    margin: 40px;
 }
 input#bouton:hover{
     background-color:#bbbbbb;
     color: #2f3640;
-
 }
 
 /***********************************************************************
@@ -291,4 +302,52 @@ input#bouton:hover{
 /*https://paulund.co.uk/how-to-create-shiny-css-buttons*/
 
 
-
+/*<div class="modale">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+              </div>
+              <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+                    <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                    <input type="text" class="form-control" id="psw" placeholder="Enter password">
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="" checked>Remember me</label>
+                  </div>
+                    <button type="submit" class="btn btn-success btn-block">
+                        <span class="glyphicon glyphicon-off"></span> Login</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+               
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+      </div>
+       
+      <script>
+      $(document).ready(function(){
+        $("#myBtn").click(function(){
+          $("#myModal").modal();
+        });
+      });
+      </script> */
