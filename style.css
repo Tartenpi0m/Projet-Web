@@ -75,6 +75,12 @@ a.active,li a:hover{
 div.container.zone{
     width: 100%;
 }
+.main-client{
+    height: 200vh;
+    display: block;
+    padding-top: 20vh;
+    background-color:#aa949462;
+}
 /***********************************************************************
  *  search box
  **********************************************************************/
@@ -157,16 +163,19 @@ input.search-txt {
 .box:hover {
     transform: rotate(-7deg);
 }
-/*****************   [   categories   ]  **********************************
+/*****************   [   categories   ]  **********************************/
 
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
+    padding-top: 30vh;
+}
+.cover{
+    height: 80vh;
     background-color: #aa949462;
-    height: 100vh;
-    padding-top: 20vh;
-}*/
+}
+
 /***********************************************************************
  *  formulaire d'inscription
  **********************************************************************/

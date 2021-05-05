@@ -24,35 +24,46 @@
 
     
     ?>
-
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Client</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
-    <title>Compte client</title>
+
 </head>
-
-<header>
-<p>COMPTE CLIENT</p>
-</header>
-
 <body>
-<div class="updiv">
-    <p>INFORMATIONS PERSONNEL</p>
-    <div class="downdiv">
+
+    <nav class="nav sticky">
+        <label class="ShopOn">ShopOn</label>
+        <ul class="main-nav">
+                <li ><a   href="Accueil.php" >Home</a> </li>
+                
+                <li class="push "><a href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
+                <li   class="push "><a class="active" href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
+                
+        </ul>
+
+    </nav>
+    <div class="main-client ">
+    <p>COMPTE CLIENT</p>
+        <div class="updiv">
+            <p>INFORMATIONS PERSONNEL</p>
+         <div class="downdiv">
     
-    <p>Identifiant : <?php echo $identifiant?></p>
-    <p>Carte bleue : 
-    <?php 
-    if($carte_num == 0) {
-        echo "aucune carte";
-    } else {
-        echo $carte_num;
-    }
+             <p>Identifiant : <?php echo $identifiant?></p>
+             <p>Carte bleue : 
+    
+     <?php 
+         if($carte_num == 0) {
+              echo "aucune carte";
+        }   else {
+              echo $carte_num;
+             }
     ?> </p>
     <p><form methode="POST"><input type="submit" value="Actualiser"></form></p>
     </div>
@@ -193,23 +204,64 @@
             ?>
 
 
-        </div>
+         </div>
+             </div>
+             </div>
+
 </div>
+    <footer class="footer">
+        <div class="main-footer">
+        <div class="row">
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">A propos de nous</a></li>
+                <li><a href="#">Nos services</a></li>
+            </ul>
+        </div>
 
+        <div class="footer-col">
+            <h4>Get Help</h4>
+            <ul>
+                <li><a href="#">Options paiment</a></li>
+                <li><a href="#"> Retours Articles</a></li>
+            </ul>
+        </div>
 
+        <div class="footer-col">
+            <h4>Online shop</h4>
+            <ul>
+                <li><a href="#">Categories articles</a></li>
+                <li><a href="#"> tous les articles</a></li>
+            </ul>
+        </div>
+        
 
+        <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+            
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                
+                
+            </div>
+        </div>   
+        </div>
+    </div>
+        
+    </footer>
 
     
-    
+</body>
 
-    
-
-
-
-    <script>
+<script>
         ladate=new Date()
         document.write(ladate.getDate()+"/"+(ladate.getMonth()+1)+"/"+ladate.getFullYear()+"<br />"+ladate.getHours()+":"+ladate.getMinutes()+":"+ladate.getSeconds())
     </script>
-
-</body>
 </html>
+
+
+
+

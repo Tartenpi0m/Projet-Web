@@ -26,8 +26,9 @@
         </ul>
 
     </nav>
-    <div class="zone categories">
-        <div class="zone ">
+    <div class="cover">
+    <div class="categories">
+      <p>Voici tous les produits de beautés: </p>
         <?php 
     
     //connexion au serveur
@@ -40,11 +41,11 @@
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="zone grid-wrapper">';
+        //echo '<div class="zone grid-wrapper">';
         echo '<div class="box zone">';
         echo '<img src="'  .$row["image_addr"].'"/>';
         echo '</div>';
-        echo '</div>';
+        //echo '</div>';
     } 
 } else {
     echo "0 results";

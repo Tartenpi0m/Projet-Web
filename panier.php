@@ -36,9 +36,9 @@
     <nav class="nav sticky">
         <label class="ShopOn">ShopOn</label>
         <ul class="main-nav">
-                <li ><a class="active" href="Accueil.php" >Home</a> </li>
+                <li ><a  href="Accueil.php" >Home</a> </li>
                 
-                <li class="push"><a href="" ><i class="fas fa-shopping-cart"></i></a> </li>
+                <li class="push"><a class="active" href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
                 <li class="push"><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>

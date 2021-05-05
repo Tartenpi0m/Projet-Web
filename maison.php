@@ -27,10 +27,11 @@
 
     </nav>
     
-
+    <div class="cover">
+    <div class="categories">
         
         <?php 
-    
+   
     //connexion au serveur
     $co=mysqli_connect('localhost','root');
     //connexion à la base de donnée projet-web
@@ -41,11 +42,10 @@
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="grid-categories">';
-        echo '<div class="boxe">';
+        echo '<div class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
         echo '</div>';
-        echo '</div>';
+       
         
     } 
 }       
@@ -53,7 +53,8 @@ if (mysqli_num_rows($result) > 0) {
     echo "0 results";
 }
     ?>
-   
+   </div>
+</div>
   
     <footer class="footer">
         <div class="main-footer">

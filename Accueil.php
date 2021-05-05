@@ -104,9 +104,9 @@ if (mysqli_num_rows($result) > 0) {
             <h4>follow us</h4>
             <div class="social-links">
             
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f">f </i></a>
+                <a href="#"><i class="fab fa-instagram"> </i></a>
+                <a href="#"><i class="fab fa-twitter"> </i></a>
                 
                 
             </div>

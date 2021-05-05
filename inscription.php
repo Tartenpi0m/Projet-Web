@@ -31,9 +31,9 @@
                 <label id="txt">Identifiant:</label>
                 <input class="input" type="text" name="identifiant"><br><br>
                 <label id="txt"> Créer mot de passe : </label>
-                <input class="input" type="text" name="mdp1"><br><br>
+                <input class="input" type="password" name="mdp1"><br><br>
                 <label id="txt">Confirmer mot de passe : </label>
-                <input class="input" type="text" name="mdp2" ><br><br>
+                <input class="input" type="password" name="mdp2" ><br><br>
                 <input id="bouton" type="submit" name="confirmer" value="Confirmer"><br>
                 <?php
                 $connect = 0;
