@@ -37,7 +37,7 @@
             <input id="btn_search" class="btn-search" type="button"  onclick="search()" value="Search"><br>
             <div class="connexion_utilisateur">
                <p > Connectez vous à votre compte <a   href="authentificationUser.php" >Se connecter </a></p> <br>
-                <p >Créer un compte ? <a href="s'inscrire.php" >S'inscrire </a></p>
+                <p >Créer un compte ? <a href="inscription.php" >S'inscrire </a></p>
                 <p > Compte admin ? <a href="authentificationAdmin.php" >Admin </a></p>
             </div>
          
