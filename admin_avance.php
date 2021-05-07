@@ -31,13 +31,13 @@
         <ul class="main-nav">
                 <li ><a  href="Accueil.php" >Home</a> </li>
                 
-                <li class="push"><a class="active" href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
-                <li class="push"><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
+                <li class="push"><a  href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
+                <li class="push"><a class="active" href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>
 
     </nav>
-    <div class="main-client ">
+    <div class="main-adminAv ">
     <?php 
  //se connecter à la base de donnée
  $co = mysqli_connect("localhost", "root");
@@ -45,18 +45,16 @@
 
 ?>
 
-<p>Espace Administrateur Avancée</p>
+<h2>Espace Administrateur Avancée</h2>
+            <div class="formulaire">
+     
+             <form class="forminscriptionAdmin" action="#" method="post">
+                <input id="reqAdmin" type="text" name="query" placeholder="Vous pouvez faire des requêtes SQL à la base de données du site directement depuis ce champs de texte"><br><br>
+                <input type="hidden" name="ok" value="ok">
+                <input id="bouton" type="submit" value="Envoyer">
 
-<div>
-    <div>
-    <form action="#" method="POST">
-    <input type="text" name="query" placeholder="Vous pouvez faire des requêtes SQL à la base de données du site directement depuis ce champs de texte" size="150">
-    <input type="hidden" name="ok" value="ok">
-    <input type="submit" value="Envoyer">
     </form>
-    </div>
-
-    <div>
+   
     <?php 
 
     if( isset($_POST["ok"])) {
@@ -88,12 +86,16 @@
 
     }
     ?>
-    </div>
+    
+
+</div>
+
+    <a href="admin.php"><p style="text-align:center;">Retour au paramètres standard administrateur ?</p></a>
 </div>
 
 
 
-<a href="admin.php"><p>Retour au paramètres standard administrateur</p></a>
+
 
     </div>
         

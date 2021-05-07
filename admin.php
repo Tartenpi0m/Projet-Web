@@ -118,7 +118,7 @@
      
              <form class="forminscription" method="post">
                 <label id="txt">Nom catégorie:</label>
-                <input class="input" type="text" name="categorie"><br><br>
+                <input class="input" type="text" name="nom"><br><br>
                 <input id="bouton" type="submit"  value="Ajouter"><br>
                 <p><input type="hidden" name="ajouter_categorie" value="ajouter_categorie"></p>
                 <label id="txt"> Nom catégorie: </label>
@@ -263,7 +263,7 @@
         </div>   
 </div>
 <div>
-<a href="admin avancée"><p>Paramètres avancées administrateur</p></a>
+<a href="admin_avance.php">Paramètres avancées administrateur</a>
 
     </div>
         

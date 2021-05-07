@@ -1,0 +1,43 @@
+.updiv {
+  padding: 2em;
+
+}
+
+.downdiv {
+    padding: 1em;
+    margin: 0 auto;
+    
+
+}
+
+
+.cat {
+    font-size: large;
+    font-weight: bold;
+    
+    
+    
+
+}
+
+.fct {
+    font-size: medium;
+    font-weight: 700;
+}
+
+.champs {
+    display: inline;
+}
+
+
+.commandediv {
+ 
+    background-color: chartreuse;
+   
+    
+
+}
+
+.articlediv {
+    background-color: chartreuse;
+}
