@@ -44,7 +44,38 @@
         </ul>
 
     </nav>
-    <div class="container zone  "></div>
+    <div class="container zone  ">
+        <?php
+        //connexion au serveur
+    $co=mysqli_connect('localhost','root');
+    //connexion à la base de donnée projet-web
+    mysqli_select_db($co,"projet-web");
+    $sql = "SELECT id,quantite,id_client,id_produit,id_commande,identifiant,nom FROM commande,client,produit_commande,produit 
+    WHERE id_client.commande = id.client 
+    AND id.commande = id_commande.produit_commande
+    AND id_produit.produit_commande = id.produit
+    ANd id.produit_commande = id.client";
+    $result = mysqli_query($co,$sql );
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo 'numéro de commande' .$row["id_commande"]."<br>";
+        echo 'Nom client' .$row["identifiant"]."<br>";
+        echo 'Nom du produit' .$row["nom"]. "Quantité".$row["quantite"]."<br>";
+        //echo '<div class="box zone">';
+        //echo '<img src="'.$row["image_addr"].'"/>';
+        //echo '</div>';
+       
+        
+    } 
+}       
+ else {
+    echo "0 results";
+} 
+
+        ?>
+    </div>
         
 
     </div>

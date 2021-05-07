@@ -15,7 +15,7 @@
         session_start();
         if($_SESSION['admin'] !== "yes") {
             header("Location: authentificationAdmin.php");
-        }
+         }
 
         //Déconnecte l'admin
 
@@ -52,8 +52,8 @@
     <div class="downdiv">
         <p class="fct">Ajouter</p>
         <form method="POST">
-        <p class="champs">Identifiant: <input type="text" name="identifiant"/></p>
-        <p class="champs">Mot de passe: <input type="password" name="mdp"></p>
+        <p class="champs">Identifiant: <input type="text" name="identifiant"/></p><br>
+        <p class="champs">Mot de passe: <input type="password" name="mdp"></p><br>
         <p class="champs"><input type="submit" value="Ajouter"></p>
         <p><input type="hidden" name="ajouter_client" value="ajouter_client"></p>
         </form>
