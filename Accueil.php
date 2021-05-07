@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+    //connexion au serveur
+    $co=mysqli_connect('localhost','root');
+    //connexion à la base de donnée projet-web
+    mysqli_select_db($co,"projet-web");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +24,36 @@
         <label class="ShopOn">ShopOn</label>
         <ul class="main-nav">
                 <li ><a class="active" href="Accueil.php" >Home</a> </li>
-                <li><a href="maison.php" >Maison</a> </li>
-                <li><a href="cuisine.php" >Cuisine</a> </li>
-                <li><a href="beaute.php" >Beauté</a> </li>
+
+                <?php
+                
+                    $sql = "SELECT id, nom FROM categorie";
+                    $response = mysqli_query($co,$sql );
+
+                    if($response) {
+
+                        while($datarow = mysqli_fetch_array($response, MYSQLI_NUM)) {
+                            
+                             echo "
+                             <form action='categorie.php' id='$datarow[1]' method='POST' style='display:inline'>
+                             <input type='hidden' name='cat_button' value='$datarow[1]'>
+                             <li><a onclick='gocat(\"$datarow[1]\")'>$datarow[1]</a><li>               
+                            </input></form>";
+                        }
+                    }
+
+
+                ?>
+                
+
+                <script type="text/javascript">
+                    function gocat(cat) {
+                        document.getElementById(cat).submit();
+                    }
+                </script>
+
+               
+
                 <li class="push"><a href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
                 <li class=><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>    
         </ul>
@@ -47,11 +80,7 @@
     <div id="wrapper" class="zone grid-wrapper">
 
     <?php 
-    
-    //connexion au serveur
-    $co=mysqli_connect('localhost','root');
-    //connexion à la base de donnée projet-web
-    mysqli_select_db($co,"projet-web");
+
     $sql = "SELECT * FROM produit ";
     $result = mysqli_query($co,$sql );
 
