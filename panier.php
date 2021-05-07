@@ -1,24 +1,28 @@
 <?php 
     session_start();
+    if(empty($_SESSION['identifiant'])) {
+        header("Location: authentificationUser.php");
+    }
+    if( isset($_SESSION['identifiant']) and $_SESSION['admin'] == "no") {
+        $identifiant = $_SESSION['identifiant'];
+    } else if($_SESSION['admin'] == "yes") {
+        header("Location: admin.php");
+    }  else {
+        header("Location: authentificationUser.php");
+    }
     
     include("include\\bddfonction.php");  
-    if (isset($_POST["identifiant"])) {
+   
 
-        $login = $_POST["identifiant"];
-        $mdp = $_POST["mdp"];
+    $co = connection_bdd();
+    $datarow = select_client($co, $login);
+
+    
 
 
-        $co = connection_bdd();
-        $datarow = select_client($co, $login);
-        $vrai_pass = pass($datarow);
-        
-        if($vrai_pass == $mdp) {  
-            //Redirection  vers la page du panier
-            $_SESSION['identifiant'] = $login;
-            $_SESSION['admin'] = "no";
-            header("Location: panier.php");        
-        } 
-    }
+    $_SESSION['panier'] = array();
+    array_push( $_SESSION['panier'], 14,18,20);
+
     ?>
    
 <!DOCTYPE html>
@@ -45,36 +49,63 @@
 
     </nav>
     <div class="container zone  ">
+
+        <div>
+        <?php 
+           
+           echo  "<br><br><br>";
+           $nbr_produits = 0;
+           foreach($_SESSION['panier'] as $id_produit) {
+               $nbr_produits ++;
+               $query3 = "SELECT id, nom, prix, categorie FROM produit WHERE id = $id_produit";
+               $response_produit_info = mysqli_query($co, $query3);
+               $array_produit_info = $response_produit_info->fetch_array(MYSQLI_NUM);
+               
+               $id = $array_produit_info[0];
+               $nom = $array_produit_info[1];
+               $prix = $array_produit_info[2];
+               
+               $categorieINT = $array_produit_info[3];
+               $response = mysqli_query($co, "SELECT categorie.nom FROM categorie WHERE categorie.id = $categorieINT");
+               $categorie = ($response->fetch_array(MYSQLI_NUM))[0];
+
+                echo "Article#$id $nom $categorie $prix euro<br>";
+                
+            }
+            ?>
+        </div>
+
+        <div>
+        <h1>paiement</h1>
+
+        <form action="#">
+        <input type="hidden" name="paiement" value="paiement">
+        <input type="submit" value="acheter">
+        </form>
+
+
         <?php
-        //connexion au serveur
-    $co=mysqli_connect('localhost','root');
-    //connexion à la base de donnée projet-web
-    mysqli_select_db($co,"projet-web");
-    $sql = "SELECT id,quantite,id_client,id_produit,id_commande,identifiant,nom FROM commande,client,produit_commande,produit 
-    WHERE id_client.commande = id.client 
-    AND id.commande = id_commande.produit_commande
-    AND id_produit.produit_commande = id.produit
-    ANd id.produit_commande = id.client";
-    $result = mysqli_query($co,$sql );
 
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        echo 'numéro de commande' .$row["id_commande"]."<br>";
-        echo 'Nom client' .$row["identifiant"]."<br>";
-        echo 'Nom du produit' .$row["nom"]. "Quantité".$row["quantite"]."<br>";
-        //echo '<div class="box zone">';
-        //echo '<img src="'.$row["image_addr"].'"/>';
-        //echo '</div>';
-       
+        if(isset($_POST('paiement'))) {
+
+            //->Check cards
+
+
+            //creer table commande id client et $nbr produit
+            $querycommande = "INSERT INTO commande (id, id_client, quantite) VALUES (NULL, ,$nbr_produits)";
+            
+            //creer produit_commande avec id_produit et id_commande
+        }
+
+        ?> 
+
+        </div>
         
-    } 
-}       
- else {
-    echo "0 results";
-} 
 
-        ?>
+
+
+
+
     </div>
         
 
