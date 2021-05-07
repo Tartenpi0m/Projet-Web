@@ -84,7 +84,7 @@
                 <input class="input" type="text" name="carte_num"><br><br>
                 <label id="txt"> Cvv : </label>
                 <input class="input" type="text" name="carte_cvv"><br><br>
-                <label id="txt">Date d'expiration carte : </label>
+                <label id="txt">Date d'expiration carte (mm/aaaa) : </label>
                 <input class="input" type="text" name="carte_date" ><br><br>
                 <p><input type="hidden" name="modif_info" value="modif_info"></p>
                 <input id="bouton" type="submit"  value="Mettre à jour"><br>

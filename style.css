@@ -76,10 +76,11 @@ div.container.zone{
     width: 100%;
 }
 .main-client{
-    height: 200vh;
+    
     display: block;
     padding-top: 20vh;
     background-color:#aa949462;
+    padding-bottom: 10vh;
 }
 /***********************************************************************
  *  search box
@@ -163,7 +164,7 @@ input.search-txt {
 .box:hover {
     transform: rotate(-7deg);
 }
-/*****************   [   categories   ]  **********************************/
+/*****************   [   categories accueil   ]  **********************************/
 
 .categories {
     display: grid;
@@ -182,7 +183,6 @@ input.search-txt {
  
 .regform{
     width: 700px;
-    height: 60vh;
     background-color: rgba(0, 0, 0, 0.712);
     margin: auto;
     color: #FFFFFF;
@@ -193,8 +193,7 @@ input.search-txt {
 .formulaire{
     background-color:#2f3640;
     width: 700px;
-    margin: auto; 
-    height: 60vh;  
+    margin: auto;  
 }
 .forminscription{
     padding: 40px;

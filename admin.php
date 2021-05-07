@@ -7,7 +7,7 @@
     <title>Administrateur</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="admin.css">
+    
 
 </head>
 <body>
@@ -31,8 +31,8 @@
         <ul class="main-nav">
                 <li ><a  href="Accueil.php" >Home</a> </li>
                 
-                <li class="push"><a class="active" href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
-                <li class="push"><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
+                <li class="push"><a  href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
+                <li class="push"><a class="active" href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>
 
@@ -44,19 +44,25 @@
  mysqli_select_db($co,"projet-web");
 
 ?>
-<p>Espace Administrateur</p>
-
-<div class="updiv">
-    <p class="cat">Client</p>
-    
-    <div class="downdiv">
-        <p class="fct">Ajouter</p>
-        <form method="POST">
-        <p class="champs">Identifiant: <input type="text" name="identifiant"/></p><br>
-        <p class="champs">Mot de passe: <input type="password" name="mdp"></p><br>
-        <p class="champs"><input type="submit" value="Ajouter"></p>
-        <p><input type="hidden" name="ajouter_client" value="ajouter_client"></p>
+ <div class="user_account">
+    <h2>Bienvenue dans l'éspace Administrateur !</h2><br>
+            <h3>Ajouter ou supprimer un compte client  </h3><br>
+            <div class="regform"><h1>Ajout / Suppression d'un compte client </h1><br><br>
+            <div class="formulaire">
+     
+             <form class="forminscription" method="post">
+                <label id="txt">Identifiant:</label>
+                <input class="input" type="text" name="identifiant"><br><br>
+                <label id="txt"> Mot de passe : </label>
+                <input class="input" type="password" name="mdp"><br><br>
+                <input id="bouton" type="submit"  value="Ajouter"><br>
+                <p><input type="hidden" name="ajouter_client" value="ajouter_client"></p>
+                <label id="txt">Identifiant:</label>
+                <input class="input" type="text" name="identifiant"><br><br>
+                <input id="bouton" type="submit"  value="Supprimer"><br>
+                <p><input type="hidden" name="supprimer_client" value="supprimer_client"></p>
         </form>
+        
     <p>
     <?php 
     if( isset($_POST['ajouter_client'])) {
@@ -79,17 +85,7 @@
         unset($_POST['ajouter_client']);
     }
     ?>
-    </p>
-    </div>
-
-    <div class="downdiv">
-        <p class="fct">Supprimer</p>
-        <form method="POST">
-        <p class="champs">Identifiant: <input type="text" name="identifiant"/></p>
-        <p class="champs"><input type="submit" value="Supprimer"></p>
-        <p><input type="hidden" name="supprimer_client" value="supprimer_client"></p>
-        </form>
-        <p>
+   
     <?php 
     if( isset($_POST['supprimer_client'])) {
 
@@ -111,18 +107,25 @@
     }
     ?>
     </p>
-    </div> 
+    </div>
+</div> 
 </div>
+<div class="user_account">
+    <h3>Ajouter ou supprimer une Catégorie </h3><br>
 
-<div class="updiv">
-    <p class="cat">Catégories</p>
-    
-    <div class="downdiv">
-        <p class="fct">Ajouter</p>
-        <form method="POST">
-            <p class="champs">Nom : <input type="text" name="nom"></p>
-            <p class="champs"><input type="submit" value="Ajouter"></p>
-            <p><input type="hidden" name="ajouter_categorie" value="ajouter_categorie"></p>
+            <div class="regform"><h1>Ajout / Suppression d'une catégorie </h1><br><br>
+            <div class="formulaire">
+     
+             <form class="forminscription" method="post">
+                <label id="txt">Nom catégorie:</label>
+                <input class="input" type="text" name="categorie"><br><br>
+                <input id="bouton" type="submit"  value="Ajouter"><br>
+                <p><input type="hidden" name="ajouter_categorie" value="ajouter_categorie"></p>
+                <label id="txt"> Nom catégorie: </label>
+                <input class="input" type="text" name="name"><br><br>
+                <input id="bouton" type="submit"  value="Supprimer"><br>
+                <p><input type="hidden" name="supprimer_categorie" value="supprimer_categorie"></p>
+                
         </form>
     <p>
         <?php
@@ -145,15 +148,7 @@
             }
         ?>
     </p>
-    </div>
     
-    <div class=downdiv> 
-        <p class="fct">Supprimer</p>
-        <form method="POST">
-            <p class="champs">Nom : <input type="text" name="name"></p>
-            <p class="champs"><input type="submit" value="Supprimer"></p>
-            <p><input type="hidden" name="supprimer_categorie" value="supprimer_categorie"></p>
-        </form>
     <p>
         <?php
             if( isset($_POST['supprimer_categorie'])) {
@@ -176,21 +171,33 @@
         ?>
     </div>
 </div>
+        </div>
+        <div class="user_account">
+    <h3>Ajouter ou supprimer un produit </h3><br>
 
-<div class="updiv">
-    <p class="cat">Produits</p>
-    
-    <div class="downdiv">
-        <p class="fct">Ajouter</p>
-        <form method="POST">
-            <p class="champs">Nom:<input type="text" name="nom"></p>
-            <p class="champs">Description:<input type="text" name="description"></p>
-            <p class="champs">Image(nom):<input type="text" name="img_addr"></p>
-            <p class="champs">Prix:<input type="number" name="prix"></p>
-            <p class="champs">Catégorie:<input type="text" name="categorie"></p>
-            <p class="champs"><input type="submit" value="Ajouter"></p>
-            <p><input type="hidden" name="ajouter_produit" value="ajouter_produit"></p>
+            <div class="regform"><h1>Ajout / Suppression d'un PRODUIT </h1><br><br>
+            <div class="formulaire">
+     
+             <form class="forminscription" method="post">
+                <label id="txt">Nom Produit</label>
+                <input class="input" type="text" name="nom"><br><br>
+                <label id="txt">Description Produit</label>
+                <input class="input" type="text" name="description"><br><br>
+                <label id="txt">Nom image</label>
+                <input class="input" type="text" name="img_addr"><br><br>
+                <label id="txt">Prix produit</label>
+                <input class="input" type="text" name="prix"><br><br>
+                <label id="txt">Catégorie</label>
+                <input class="input" type="text" name="categorie"><br><br>
+                <input id="bouton" type="submit"  value="Ajouter"><br>
+               
+                <label id="txt"> Nom produit: </label>
+                <input class="input" type="text" name="name"><br><br>
+                <input id="bouton" type="submit"  value="Supprimer"><br>
+                <p><input type="hidden" name="supprimer_produit" value="supprimer_produit"></p>
+              
         </form>
+
         <p>
             <?php 
                  if( isset($_POST['ajouter_produit'])) {
@@ -229,15 +236,8 @@
                 }
             ?>
         </p>
-    </div>
+ 
 
-    <div class="downdiv">
-        <p class="fct">Supprimer</p>
-        <form method="POST">
-            <p class="champs">Nom : <input type="text" name="name"></p>
-            <p class="champs"><input type="submit" value="Supprimer"></p>
-            <p><input type="hidden" name="supprimer_produit" value="supprimer_produit"></p>
-        </form>
     <p>
         <?php
             if( isset($_POST['supprimer_produit'])) {
@@ -259,7 +259,8 @@
             }
         ?>
 
-    </div>   
+    </div>
+        </div>   
 </div>
 <div>
 <a href="admin avancée"><p>Paramètres avancées administrateur</p></a>
