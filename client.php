@@ -33,7 +33,7 @@
     <title>Compte Client</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="admin.css">
+    
 
 </head>
 <body>
@@ -44,18 +44,17 @@
                 <li ><a   href="Accueil.php" >Home</a> </li>
                 
                 <li class="push "><a href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
-                <li   class="push "><a class="active" href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
+                <li class="push "><a class="active" href="client.php" ><i class="fas fa-user-circle"></i></a> </li>
                 
         </ul>
 
     </nav>
     <div class="main-client ">
-    <p>COMPTE CLIENT</p>
-        <div class="updiv">
-            <p>INFORMATIONS PERSONNEL</p>
-         <div class="downdiv">
-    
-             <p>Identifiant : <?php echo $identifiant?></p>
+    <div class="user_account">
+    <h2>Bienvenue à votre compte !</h2><br>
+            <h3>Informations personnelles de votre compte </h3><br>
+            
+             <p>Identifiant : <?php echo $identifiant?></p><br>
              <p>Carte bleue : 
     
      <?php 
@@ -64,25 +63,34 @@
         }   else {
               echo $carte_num;
              }
-    ?> </p>
-    <p><form methode="POST"><input type="submit" value="Actualiser"></form></p>
+    ?> </p><br>
+    <p><form methode="POST"><input id="bouton" type="submit" value="Actualiser"></form></p>
     </div>
 
-</div>
 
-<div class="updiv">
-    <p>MODIFICATION INFORMATIONS PERSONNEL</p>
-
-    <div class="downdiv">
-    <form method="POST">
-    <p>Identifiant: <input type="text" name ="identifiant"></p>
-    <p>Mot de passe: <input type="password" name ="pass1"> Confirmer votre mot de passe: <input type="password" name ="pass2"></p>
-    <p>Carte:</p>
-    <p>Numéro: <input type="text" name="carte_num"> cvv: <input type="text" name="carte_cvv">Date d'expiration (mm/aaaa): <input type="text" name="carte_date"></p>
-    <p><input type="hidden" name="modif_info" value="modif_info"></p>
-    <p><input type="submit" value="Mettre à jour"></p>
-    </form>
-    
+<div class="update_user">
+    <h3>Modifiez vos Informations personnelles dans le formulaire ci-dessous</h3> 
+    <div class="regform"><h1>Modifier Informations Personnelles </h1><br><br>
+            <div class="formulaire">
+     
+             <form class="forminscription" method="post">
+                <label id="txt">Identifiant:</label>
+                <input class="input" type="text" name="identifiant"><br><br>
+                <label id="txt"> Mot de passe : </label>
+                <input class="input" type="password" name="pass1"><br><br>
+                <label id="txt">Confirmer mot de passe : </label>
+                <input class="input" type="password" name="pass2" ><br><br>
+                <label id="txt">Numéro carte bancaire :</label>
+                <input class="input" type="text" name="carte_num"><br><br>
+                <label id="txt"> Cvv : </label>
+                <input class="input" type="text" name="carte_cvv"><br><br>
+                <label id="txt">Date d'expiration carte : </label>
+                <input class="input" type="text" name="carte_date" ><br><br>
+                <p><input type="hidden" name="modif_info" value="modif_info"></p>
+                <input id="bouton" type="submit"  value="Mettre à jour"><br>
+                  
+           
+           
     <?php 
         if(isset($_POST["modif_info"])) {
 
@@ -152,11 +160,11 @@
         }
     ?>
 
+</form>
+                </div>
 
-    </div>
-
-</div>
-
+            </div>
+</div>   
 
 <div class="updiv">
         <p>COMMANDES</p>

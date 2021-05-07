@@ -216,7 +216,7 @@ input.input:hover{
     background-color:rgb(252, 237, 214) ;
 }
 input#bouton {
-    width: 100px;
+    width: 150px;
     height: 40px;
     background-color: #e91e63;
     color: #ffffff;
@@ -225,12 +225,47 @@ input#bouton {
     border: none;
     border-radius: 20px;
     margin: 40px;
+    font-weight: bold;
 }
 input#bouton:hover{
     background-color:#bbbbbb;
     color: #2f3640;
+    font-weight: bold;
+}
+/***********************************************************************
+ *  compte client
+ **********************************************************************/
+.user_account{
+    padding: 40px;
 }
 
+.user_account h2{
+    color: #e91e63;
+    text-align: center;
+    font-size: 40px;
+}
+.user_account h3{
+    color:#2f3640;
+    font-size: 25px;
+    padding-top: 60px;
+    text-decoration: underline;
+    font-style: italic;
+}
+.user_account #bouton{
+    padding-top: 0%;
+    margin-left: 100px;
+}
+.update_user{
+    height: 100vh;
+}
+.update_user h3{
+    color:#2f3640;
+    font-size: 25px;
+    padding-bottom: 40px;
+    text-decoration: underline;
+    font-style: italic;
+    padding-left: 40px;
+}
 /***********************************************************************
  *  Footer
  **********************************************************************/
