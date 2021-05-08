@@ -34,10 +34,10 @@
 
                         while($datarow = mysqli_fetch_array($response, MYSQLI_NUM)) {
                             
-                             echo "
-                             <form action='categorie.php' id='$datarow[1]' method='POST' style='display:inline'>
-                             <input type='hidden' name='cat_button' value='$datarow[1]'>
-                             <li><a onclick='gocat(\"$datarow[1]\")'>$datarow[1]</a><li>               
+                            echo "
+                            <form action='categorie.php' id='$datarow[1]' method='POST' style='display:inline'>
+                            <input type='hidden' name='cat_button' value='$datarow[1]'>
+                            <li><a onclick='gocat(\"$datarow[1]\")'>$datarow[1]</a><li>               
                             </input></form>";
                         }
                     }
