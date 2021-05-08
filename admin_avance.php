@@ -54,7 +54,7 @@
                 <input id="bouton" type="submit" value="Envoyer">
 
     </form>
-   
+    </div>
     <?php 
 
     if( isset($_POST["ok"])) {
@@ -88,19 +88,11 @@
     ?>
     
 
-</div>
+
 
     <a href="admin.php"><p style="text-align:center;">Retour au paramètres standard administrateur ?</p></a>
 </div>
 
-
-
-
-
-    </div>
-        
-
-    </div>
     <footer class="footer">
         <div class="main-footer">
         <div class="row">

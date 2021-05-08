@@ -62,6 +62,7 @@
 
     <div class="container zone  ">
         
+        
         <div class="search-box">
             <div class="txt"><h2 id="h2">Bienvenue chez ShopOn</h2>
                 <p id="p">Vous trouverez tous les articles à mini prix !</p></div>
@@ -69,9 +70,9 @@
             <input id="search" class="search-txt" type="text" name="search" placeholder="Tapez articles" > 
             <input id="btn_search" class="btn-search" type="button"  onclick="search()" value="Search"><br>
             <div class="connexion_utilisateur">
-               <p > Connectez vous à votre compte <a   href="authentificationUser.php" >Se connecter </a></p> <br>
-                <p >Créer un compte ? <a href="inscription.php" >S'inscrire </a></p>
-                <p > Compte admin ? <a href="authentificationAdmin.php" >Admin </a></p>
+               <p > Connectez vous à votre compte <a href="login.php" >Se connecter </a></p> <br>
+                <p >Créer un compte ? <a href="s'inscrire.php" >S'inscrire </a></p>
+                <p > Compte admin ? <a href="login_Admin.php" >Admin </a></p>
             </div>
          
         </div>
@@ -88,6 +89,7 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         echo '<div class="produit_">';
+        echo '<input  id="description" hidden value="'.$row["description"].'"/>';
         echo '<div class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
         echo '</div>';
