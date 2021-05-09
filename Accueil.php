@@ -4,6 +4,13 @@
     $co=mysqli_connect('localhost','root');
     //connexion à la base de donnée projet-web
     mysqli_select_db($co,"projet-web");
+
+    if(!isset($_SESSION['panier'])) {
+        $_SESSION['panier'] = array();
+    }
+    if(isset($_POST['id_produit'])) {
+        array_push( $_SESSION['panier'], $_POST['id_produit']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,17 +49,13 @@
                         }
                     }
 
-
                 ?>
-                
 
                 <script type="text/javascript">
                     function gocat(cat) {
                         document.getElementById(cat).submit();
                     }
                 </script>
-
-               
 
                 <li class="push"><a href="panier.php" ><i class="fas fa-shopping-cart"></i></a> </li>
                 <li class=><a href="client.php" ><i class="fas fa-user-circle"></i></a> </li>    
@@ -94,18 +97,27 @@ if (mysqli_num_rows($result) > 0) {
         echo '<div class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
         echo '<input id="desc"  value="'.$row["description"].'"/>';
-        echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
+
+        echo '<form action="#" id="'.$row["id"].'" method="POST" style="display:inline">';
+        echo '<input id="btnprod" onclick="add_panier('.$row["id"].')" type="submit" value="ajouter au panier"/>';
         echo '</div>';
-        echo '<input hidden value="'.$row["id"].'"/>';
+        echo '<input type="hidden" name="id_produit" value="'.$row["id"].'"/>';
         echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
-        
+        echo "</form>";
         echo '</div>';
+        
         
     } 
 } else {
     echo "0 results";
 }
     ?>
+
+    <script type="text/javascript">
+        function add_produit(id_produit) {
+            document.getElementById(id_produit).submit();
+        }
+    </script>
    
     </div>
     

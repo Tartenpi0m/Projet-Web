@@ -15,17 +15,10 @@
    
 
     $co = connection_bdd();
-    $datarow = select_client($co, $login);
-    
-        
-
-
-    $_SESSION['panier'] = array();
-    array_push( $_SESSION['panier'], 14,18,20);
-
+   
     
 
-    //trouver l'id client (à déplacer)
+    //trouver l'id client 
     $queryid = "SELECT id FROM client WHERE identifiant LIKE '$identifiant'";
     $responseid = mysqli_query($co, $queryid);
     if($responseid) {
@@ -48,7 +41,7 @@
 
 </head>
 <body>
-    <nav class="nav sticky">
+<nav class="nav sticky">
         <label class="ShopOn">ShopOn</label>
         <ul class="main-nav">
                 <li ><a  href="Accueil.php" >Home</a> </li>
@@ -62,7 +55,7 @@
     <div class="panier">
 
         <div class="article-cmd">
-            <h2>Les articles commandés</h2>
+            <h2><br>Les articles commandés</h2>
         <?php 
            //AFFICHAGE DU PANIER
            echo  "<br><br><br>";
@@ -100,6 +93,7 @@
         <input type="hidden" name="paiement" value="paiment">
         <input id="bouton"type="submit" value="payer">
         </form>
+    
 
 
         <?php
@@ -200,7 +194,9 @@
 
         ?> 
         </div>
+    
         
+
 
 
 
