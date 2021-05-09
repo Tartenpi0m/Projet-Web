@@ -44,8 +44,9 @@ if (mysqli_num_rows($result) > 0) {
         //echo '<div class="zone grid-wrapper">';
         echo '<div class="box zone">';
         echo '<img src="'  .$row["image_addr"].'"/>';
+        echo '<input id="btnprod_cat" type="submit" value="ajouter au panier"/>';
         echo '</div>';
-        //echo '</div>';
+        //echo '</div>'; 
     } 
 } else {
     echo "0 results";}

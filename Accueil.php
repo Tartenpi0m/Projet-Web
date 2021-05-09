@@ -70,9 +70,9 @@
             <input id="search" class="search-txt" type="text" name="search" placeholder="Tapez articles" > 
             <input id="btn_search" class="btn-search" type="button"  onclick="search()" value="Search"><br>
             <div class="connexion_utilisateur">
-               <p > Connectez vous à votre compte <a href="login.php" >Se connecter </a></p> <br>
+               <p > Connectez vous à votre compte <a href="authentificationUser.php" >Se connecter </a></p> <br>
                 <p >Créer un compte ? <a href="s'inscrire.php" >S'inscrire </a></p>
-                <p > Compte admin ? <a href="login_Admin.php" >Admin </a></p>
+                <p > Compte admin ? <a href="authentificationAdmin.php" >Admin </a></p>
             </div>
          
         </div>
@@ -84,23 +84,29 @@
 
     $sql = "SELECT * FROM produit ";
     $result = mysqli_query($co,$sql );
-
+   
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         echo '<div class="produit_">';
-        echo '<input  id="description" hidden value="'.$row["description"].'"/>';
+       
+        //echo '<input id="desc" type="hidden"  onclick="decrire()" value="'.$row["description"].'"/>';
         echo '<div class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
+        echo '<input id="desc"  value="'.$row["description"].'"/>';
+        echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
         echo '</div>';
         echo '<input hidden value="'.$row["id"].'"/>';
         echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
+        
         echo '</div>';
+        
     } 
 } else {
     echo "0 results";
 }
     ?>
+   
     </div>
     
     <footer class="footer">
@@ -183,5 +189,9 @@ if (mysqli_num_rows($result) > 0) {
 }
   function search() {
     filterProduct(document.querySelector('#search').value);
+  }
+  function decrire() {
+      var desc = document.querySelector('#desc');
+     desc= document.getElementById('desc');
   }
 </script>

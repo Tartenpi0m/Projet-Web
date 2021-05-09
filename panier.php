@@ -59,9 +59,10 @@
         </ul>
 
     </nav>
-    <div class="container zone  ">
+    <div class="panier">
 
-        <div>
+        <div class="article-cmd">
+            <h2>Les articles commandés</h2>
         <?php 
            //AFFICHAGE DU PANIER
            echo  "<br><br><br>";
@@ -88,16 +89,16 @@
             }
 
 
-            echo "prix totale : $prix_totale";
+            echo "prix totale : $prix_totale<br>";
             ?>
         </div>
 
-        <div>
-        <h1>paiement</h1>
+        <div class="paiment">
+        <h3>Validez votre commande ici</h3>
 
         <form action="#" method='POST'>
-        <input type="hidden" name="paiement" value="paiement">
-        <input type="submit" value="acheter">
+        <input type="hidden" name="paiement" value="paiment">
+        <input id="bouton"type="submit" value="payer">
         </form>
 
 
@@ -126,7 +127,7 @@
                         echo '<p style="color: red;">Tous les champs de la carte de paiment ne sont pas remplis, aucune modification n\'a été apportée sur la carte</p>';
                     } else {
                         $valide = 1;
-                        if(!preg_match("#^[0-9]{16}$#",$carte_num)) {
+                        if(!preg_match("#^[0-9]{16}$# ",$carte_num)) {
                             $valide = 0;
                             echo '<p style="color: red;">Numéro de carte invalide<p>';
                         }
@@ -157,11 +158,11 @@
                 //Affiche formulaire d'ajout de carte de paiement
                 echo "
                 <form action='#' class='forminscription' method='post'>
-                <label id='txt'>Numéro carte bancaire :</label>
+                <label id='txt-1'>Numéro carte bancaire :</label>
                 <input class='input' type='text' name='carte_num'><br><br>
-                <label id='txt'> Cvv : </label>
+                <label id='txt-2'> Cvv : </label>
                 <input class='input' type='text' name='carte_cvv'><br><br>
-                <label id='txt'>Date d'expiration carte (mm/aaaa) : </label>
+                <label id='txt-3'>Date d'expiration carte (mm/aaaa) : </label>
                 <input class='input' type='text' name='carte_date' ><br><br>
                 <p><input type='hidden' name='add_carte' value='add_carte'></p>
                 <input id='bouton' type='submit'  value='Ajouter carte'><br>

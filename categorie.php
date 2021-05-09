@@ -86,6 +86,7 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         echo '<div class="box zone">';
         echo '<img src="'  .$row["image_addr"].'"/>';
+        echo '<input id="btnprod_cat" type="submit" value="ajouter au panier"/>';
         echo '</div>';
        
     } 

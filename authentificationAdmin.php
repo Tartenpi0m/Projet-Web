@@ -15,7 +15,7 @@
 <a href="#demo">Ouvrir la modale</a>
    <div id="demo" class="modal">
         <div class="modal_content">
-        <h1>User Authentification</h1><br><br>
+        <h1>Admin Authentification</h1><br><br>
         <a href="#" class="modal_close">&times;</a>
 
         <div>

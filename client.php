@@ -67,7 +67,49 @@
     <p><form methode="POST"><input id="bouton" type="submit" value="Actualiser"></form></p>
     </div>
 
+    <div class="cmd_client">
+        <h3>Vos Commandes :</h3><br>
 
+            <?php
+                $query = "SELECT commande.id FROM commande,client WHERE client.id = commande.id_client AND client.id = $id_client";
+                $response_id_commande = mysqli_query($co, $query);
+
+                while ($id_commande = $response_id_commande->fetch_array()) {
+
+                    $id_commande = $id_commande[0];
+                    $query2 = "SELECT produit_commande.id_produit FROM produit_commande WHERE produit_commande.id_commande = $id_commande";
+                    $response_id_produit = mysqli_query($co, $query2);
+                    
+                    echo '<div class="commandediv">';
+                    echo "Commande n#$id_commande<br>";
+
+                    while($id_produit = $response_id_produit->fetch_array(MYSQLI_NUM)) {
+
+                        echo '<div class="articlediv">';
+
+                        $id_produit = $id_produit[0];
+                        $query3 = "SELECT id, nom, prix, categorie FROM produit WHERE id = $id_produit";
+                        $response_produit_info = mysqli_query($co, $query3);
+                        $array_produit_info = $response_produit_info->fetch_array(MYSQLI_NUM);
+
+                        $id = $array_produit_info[0];
+                        $nom = $array_produit_info[1];
+                        $prix = $array_produit_info[2];
+
+                        $categorieINT = $array_produit_info[3];
+                        $response = mysqli_query($co, "SELECT categorie.nom FROM categorie WHERE categorie.id = $categorieINT");
+                        $categorie = ($response->fetch_array(MYSQLI_NUM))[0];
+
+                        echo "Article#$id $nom $categorie $prix euro";
+                        echo "</div>";
+                    }
+                    echo "</div>";
+
+                }
+            ?>
+
+
+         </div>
 <div class="update_user">
     <h3>Modifiez vos Informations personnelles dans le formulaire ci-dessous</h3> 
     <div class="regform"><h1>Modifier Informations Personnelles </h1><br><br>
@@ -166,55 +208,8 @@
             </div>
 </div>   
 
-<div class="updiv">
-        <p>COMMANDES</p><br>
-        <div class="downdiv">
 
-
-            <?php
-                $query = "SELECT commande.id FROM commande,client WHERE client.id = commande.id_client AND client.id = $id_client";
-                $response_id_commande = mysqli_query($co, $query);
-
-                while ($id_commande = $response_id_commande->fetch_array()) {
-
-                    $id_commande = $id_commande[0];
-                    $query2 = "SELECT produit_commande.id_produit FROM produit_commande WHERE produit_commande.id_commande = $id_commande";
-                    $response_id_produit = mysqli_query($co, $query2);
-                    
-                    echo '<div class="commandediv">';
-                    echo "Commande n#$id_commande<br>";
-
-                    while($id_produit = $response_id_produit->fetch_array(MYSQLI_NUM)) {
-
-                        echo '<div class="articlediv">';
-
-                        $id_produit = $id_produit[0];
-                        $query3 = "SELECT id, nom, prix, categorie FROM produit WHERE id = $id_produit";
-                        $response_produit_info = mysqli_query($co, $query3);
-                        $array_produit_info = $response_produit_info->fetch_array(MYSQLI_NUM);
-
-                        $id = $array_produit_info[0];
-                        $nom = $array_produit_info[1];
-                        $prix = $array_produit_info[2];
-
-                        $categorieINT = $array_produit_info[3];
-                        $response = mysqli_query($co, "SELECT categorie.nom FROM categorie WHERE categorie.id = $categorieINT");
-                        $categorie = ($response->fetch_array(MYSQLI_NUM))[0];
-
-                        echo "Article#$id $nom $categorie $prix euro";
-
-                        echo "</div>";
-
-                    }
-                    echo "</div>";
-
-                }
-            ?>
-
-
-         </div>
-             </div>
-             </div>
+             
 
 </div>
     <footer class="footer">
