@@ -100,11 +100,12 @@ if (mysqli_num_rows($result) > 0) {
         echo '</p>';
         
         echo '<input hidden value="'.$row["id"].'"/>';
-       
+        echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
 
     
         echo '</div>';
         $i = $i+1;
+
     } 
 } else {
     echo "0 results";

@@ -92,7 +92,6 @@ session_start();
 if (mysqli_num_rows($result) > 0) {
     $i = 0; 
     while($row = mysqli_fetch_assoc($result)) {
-<<<<<<< HEAD
         echo '<div onclick="describe('.$i.')" class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
         echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
@@ -102,15 +101,6 @@ if (mysqli_num_rows($result) > 0) {
         
         echo '<input hidden value="'.$row["id"].'"/>';
         echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
-=======
-        echo '<div class="box zone">';
-        echo '<img src="'  .$row["image_addr"].'"/>';
-        echo '<form action="#" id="'.$row["id"].'" method="POST" style="display:inline">';
-        echo '<input id="btnprod_cat" onclick="add_panier('.$row["id"].')" type="submit" value="ajouter au panier"/>';
-        echo '<input type="hidden" name="id_produit" value="'.$row["id"].'"/>';
-        echo '<input type=hidden" name="cat_button" value="'.$cat_button.'">';
-        echo "</form>";
->>>>>>> 8e6b1411de978b444ca11e3a542b4356777f1de3
         
         echo '</div>';
         $i = $i+1;
