@@ -96,8 +96,8 @@ if (mysqli_num_rows($result) > 0) {
         echo '<img onclick="describe('.$i.')" src="'.$row["image_addr"].'"/>';
         echo '<form action="#" id="'.$row["id"].'" method="POST" style="display:inline">';
         echo '<input id="btnprod_cat" onclick="add_panier('.$row["id"].')" type="submit" value="ajouter au panier"/>';
-        echo '<input type="hidden" name="id_produit" value="'.$row["id"].'"/>';
-        echo '<input type=hidden" name="cat_button" value="'.$cat_button.'">';
+        echo '<input hidden name="id_produit" value="'.$row["id"].'"/>';
+        echo '<input hidden name="cat_button" value="'.$cat_button.'">';
         echo "</form>";
         echo '<p id="prod_'.$i.'" class="desribe-prod" hidden  >';
         echo $row["description"];
