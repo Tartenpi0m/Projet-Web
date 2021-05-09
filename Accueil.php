@@ -94,30 +94,17 @@ if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         echo '<div onclick="describe('.$i.')" class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
-<<<<<<< HEAD
         echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
-        echo '<p id="prod_'.$i.'" class="desribe-prod" hidden  >';
+        echo '<p id="prod_'.$i.'" hidden class="desribe-prod"   >';
         echo $row["description"];
         echo '</p>';
         
         echo '<input hidden value="'.$row["id"].'"/>';
-=======
-        echo '<input id="desc"  value="'.$row["description"].'"/>';
+       
 
-        echo '<form action="#" id="'.$row["id"].'" method="POST" style="display:inline">';
-        echo '<input id="btnprod" onclick="add_panier('.$row["id"].')" type="submit" value="ajouter au panier"/>';
+    
         echo '</div>';
-        echo '<input type="hidden" name="id_produit" value="'.$row["id"].'"/>';
->>>>>>> 8e6b1411de978b444ca11e3a542b4356777f1de3
-        echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
-        echo "</form>";
-        echo '</div>';
-<<<<<<< HEAD
         $i = $i+1;
-=======
-        
-        
->>>>>>> 8e6b1411de978b444ca11e3a542b4356777f1de3
     } 
 } else {
     echo "0 results";
