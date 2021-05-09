@@ -87,20 +87,20 @@
    
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
+    $i = 0; 
     while($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="produit_">';
-       
-        //echo '<input id="desc" type="hidden"  onclick="decrire()" value="'.$row["description"].'"/>';
-        echo '<div class="box zone">';
+        echo '<div onclick="describe('.$i.')" class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
-        echo '<input id="desc"  value="'.$row["description"].'"/>';
         echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
-        echo '</div>';
+        echo '<p id="prod_'.$i.'" class="desribe-prod" hidden  >';
+        echo $row["description"];
+        echo '</p>';
+        
         echo '<input hidden value="'.$row["id"].'"/>';
         echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
         
         echo '</div>';
-        
+        $i = $i+1;
     } 
 } else {
     echo "0 results";
@@ -190,8 +190,8 @@ if (mysqli_num_rows($result) > 0) {
   function search() {
     filterProduct(document.querySelector('#search').value);
   }
-  function decrire() {
-      var desc = document.querySelector('#desc');
-     desc= document.getElementById('desc');
+  function describe(i) {
+      var desc = document.querySelector('#prod_'+i);
+      desc.hidden = !desc.hidden;
   }
 </script>

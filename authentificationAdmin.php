@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="main_modal">
-<a href="#demo">Ouvrir la modale</a>
+
    <div id="demo" class="modal">
         <div class="modal_content">
         <h1>Admin Authentification</h1><br><br>

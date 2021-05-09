@@ -38,13 +38,20 @@
     $result = mysqli_query($co,$sql );
 
 if (mysqli_num_rows($result) > 0) {
-    // output data of each row
+    $i = 0; 
     while($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="box zone">';
-        echo '<img src="'  .$row["image_addr"].'"/>';
-        echo '<input id="btnprod_cat" type="submit" value="ajouter au panier"/>';
+        echo '<div onclick="describe('.$i.')" class="box zone">';
+        echo '<img src="'.$row["image_addr"].'"/>';
+        echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
+        echo '<p id="prod_'.$i.'" class="desribe-prod" hidden  >';
+        echo $row["description"];
+        echo '</p>';
+        
+        echo '<input hidden value="'.$row["id"].'"/>';
+        echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
+        
         echo '</div>';
-       
+        $i = $i+1;
     } 
         
 } else {
@@ -102,4 +109,10 @@ if (mysqli_num_rows($result) > 0) {
 
     
 </body>
+<script>
+      function describe(i) {
+      var desc = document.querySelector('#prod_'+i);
+      desc.hidden = !desc.hidden;
+  }
+    </script>
 </html>
