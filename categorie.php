@@ -11,6 +11,13 @@ session_start();
 
     //$_SESSION['categorie'] = "Maison";
     $categorie =  $_POST['cat_button'];
+
+    if(!isset($_SESSION['panier'])) {
+        $_SESSION['panier'] = array();
+    }
+    if(isset($_POST['id_produit'])) {
+        array_push( $_SESSION['panier'], $_POST['id_produit']);
+    }
 ?>
    
 <!DOCTYPE html>
@@ -46,6 +53,7 @@ session_start();
                             <li><a class='active' onclick='gocat(\"$datarow[1]\")'>$datarow[1]</a><li>               
                             </input></form>";
                                 $id_cat = $datarow[0];
+                                $cat_button= $datarow[1];
                             } else {
                                 echo "
                             <form action='categorie.php' id='$datarow[1]' method='POST' style='display:inline'>
@@ -84,6 +92,7 @@ session_start();
 if (mysqli_num_rows($result) > 0) {
     $i = 0; 
     while($row = mysqli_fetch_assoc($result)) {
+<<<<<<< HEAD
         echo '<div onclick="describe('.$i.')" class="box zone">';
         echo '<img src="'.$row["image_addr"].'"/>';
         echo '<input id="btnprod" type="submit" value="ajouter au panier"/>';
@@ -93,6 +102,15 @@ if (mysqli_num_rows($result) > 0) {
         
         echo '<input hidden value="'.$row["id"].'"/>';
         echo '<input class="nom_prod" hidden value="'.$row["nom"].'"/>';
+=======
+        echo '<div class="box zone">';
+        echo '<img src="'  .$row["image_addr"].'"/>';
+        echo '<form action="#" id="'.$row["id"].'" method="POST" style="display:inline">';
+        echo '<input id="btnprod_cat" onclick="add_panier('.$row["id"].')" type="submit" value="ajouter au panier"/>';
+        echo '<input type="hidden" name="id_produit" value="'.$row["id"].'"/>';
+        echo '<input type=hidden" name="cat_button" value="'.$cat_button.'">';
+        echo "</form>";
+>>>>>>> 8e6b1411de978b444ca11e3a542b4356777f1de3
         
         echo '</div>';
         $i = $i+1;
@@ -102,7 +120,14 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "0 results";
 }
+
     ?>
+
+    <script type="text/javascript">
+        function add_produit(id_produit) {
+            document.getElementById(id_produit).submit();
+        }
+    </script>
 
 
         </div>
