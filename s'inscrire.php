@@ -68,7 +68,7 @@
 
             $_SESSION['identifiant'] = $login;
             $_SESSION['admin'] = "no";
-            header("Location: Accueil.html");
+            header("Location: Accueil.php");
         } else {
             echo "erreur: il se peut qu'un utilisateur avec le même identifiant existe déjà";
         }

@@ -103,7 +103,7 @@
                         echo "Article#$id $nom $categorie $prix euro";
                         echo "</div>";
                     }
-                    echo "</div>";
+                    echo "<br></div>";
 
                 }
             ?>
